@@ -1,5 +1,5 @@
 # ReactJS-Redux-Basics-Course-Documentation
-This tutorial is the next step after the ` ReactJS Basics ` [tutorial](https://github.com/hossamnasser938/ReactJS-Basics-Course-Documentation).
+This tutorial is the next step after the ` ReactJS Basics ` [tutorial](https://github.com/hossamnasser938/ReactJS-Basics-Course-Documentation). This tutorial can be found [here](https://www.youtube.com/playlist?list=PL55RiY5tL51rrC3sh8qLiYHqUV3twEYU_).
 
 ## Course Work
 Through this tutorial I have worked on this [project](https://github.com/hossamnasser938/ReactJS-Redux-Basics-Project) for practice.
