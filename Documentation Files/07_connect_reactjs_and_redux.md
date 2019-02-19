@@ -1,11 +1,11 @@
 # Connect ReactJS and Redux
 * Now we know how to use ` Redux ` as a standalone tool, let's connect it with ` ReactJS ` to achieve our goal of **abstracting** *state change* and *communication* among **components**.
 * To do that we need to install a package named ` react-redux ` which simplifies this connection. To install it hit ` npm install react-redux --save `.
-* We will build a very simple application that shows how to ` ReactJS ` and ` Redux ` work together. This application holds 3 **Components**:
+* We will build a very simple application that shows how ` ReactJS ` and ` Redux ` work together. This application holds 3 **Components**:
     1. ` App ` which will be the root ` Component ` of our application and will wrap the other 2 **components**.
     2. ` AdjustPreferences ` is a simple ` Component ` that enables changing the **preferences** of the user and for now the preferences is only enabling/disabling notifications.
     3. ` ShowPreferences ` is a simple ` Component ` that shows the user preferences.
-* In this app we will have a ` button ` in ` AdjustPreferences ` ` Component ` that enables/disables notifications based on its current state(enabled or disabled). In ` ShowPreferences ` we will have a simple ` div ` that shows whether preferences is enabled or disabled.
+* In this app we will have a ` button ` in ` AdjustPreferences ` ` Component ` that enables/disables notifications based on its current state(enabled or disabled). In ` ShowPreferences ` we will have a simple ` div ` that shows whether notifications is enabled or disabled.
 * Let's start:
     1. In ` index.js ` we will define our ` Redux ` stuff such as ` Reducer `, ` Store ` and ` render ` our **root** ` Component ` which is ` App `.
     ```
@@ -60,10 +60,10 @@
     };
     ```
     Notes:
-        * The way we ` import ` the **components** ` AdjustPreferences ` and ` ShowPreferences ` is a bit strange. We used to do it like that ` import { ShowPreferences } from './ShowPreferences' `. This syntax is used with ` default ` ` export ` and we will see this ` default ` ` export ` in both **components**.
+        * The way we ` import ` the **components** ` AdjustPreferences ` and ` ShowPreferences ` is a bit strange. We used to do it like that ` import { ShowPreferences } from './ShowPreferences' `. This strange syntax is used with ` default ` ` export ` and we will see this ` default ` ` export ` in both **components**.
     3. In ` AdjustPreferences ` ` Component ` we need to do 2 things related to ` Redux `:
-        * We need to get the ` preferences ` attribute value ffrom ` state ` object to configure the ` button ` well. If ` preferences ` is ` true ` we make the button ` text ` and ` onClick ` to disable Preferences. If it is ` false ` we set its ` text ` and ` onClick ` to enable preferences. For that we need to get the ` state ` as well as the ` actions ` to ` dispatch `. To get the ` state ` we define a method named(for convention only) ` mapStateToProps ` which, as the names suggests, maps what we need from the global ` state ` to attributes in the ` props ` of this ` Component `. ` mapStateToProps ` accepts the global ` state ` object and returns an object whose keys are ` props ` attributes and values are ` state ` attributes. To get a reference to ` actions ` that we can ` dispatch ` we define another method named ` mapDispatchToProps ` which also, as the name suggests, maps ` actions ` that can be dispatched to attributes in the ` props ` that we can pass as a reference anywhere including ` onClick ` method of the ` button `. ` mapDispatchToProps ` accepts a reference to ` dispatch ` ` function ` which we use to ` dispatch ` ` events ` and returns an object whose keys are attributes of ` props ` and values are funcions that inside call ` dispatch ` actions with a suitable ` action ` object.        
-        * By that we defined all the things that we need to ` connect ` this ` Component ` with ` Redux ` so the next step is to connect it using ` connect ` method which we ` import ` fom ` 'react-redux' `. ` connect ` method accepts ` mapStateToProps ` and ` mapDispatchToProps ` **functions** that we have just defined. ` connect ` method return us a method that we can call by passing it the ` Component ` we need to wire up with ` Redux `. And last we need to ` default ` ` export ` the result which is the **wired-up** ` Component `.
+        * We need to get the ` notifications ` attribute value from ` state ` object to configure the ` button ` well. If ` notifications ` is ` true ` we make the button ` text ` and ` onClick ` to disable notifications. If it is ` false ` we set its ` text ` and ` onClick ` to enable notifications. For that we need to get the ` state ` as well as the ` actions ` to ` dispatch `. To get the ` state ` we define a method named(for convention only) ` mapStateToProps ` which, as the names suggests, maps what we need from the global ` state ` to attributes in the ` props ` of this ` Component `. ` mapStateToProps ` accepts the global ` state ` object and returns an object whose keys are ` props ` attributes and values are ` state ` attributes. To get a reference to ` actions ` that we can ` dispatch ` we define another method named ` mapDispatchToProps ` which also, as the name suggests, maps ` actions ` that can be dispatched to attributes in the ` props ` that we can pass as a reference anywhere including ` onClick ` method of the ` button `. ` mapDispatchToProps ` accepts a reference to ` dispatch ` ` function ` which we use to ` dispatch ` ` events ` and returns an object whose keys are attributes of ` props ` and values are functions that inside call ` dispatch ` actions with a suitable ` action ` object.        
+        * By that we defined all the things that we need to ` connect ` this ` Component ` with ` Redux ` so the next step is to ` connect ` it using ` connect ` method which we ` import ` fom ` 'react-redux' `. ` connect ` method accepts ` mapStateToProps ` and ` mapDispatchToProps ` **functions** that we have just defined. ` connect ` method return us a method that we can call by passing it the ` Component ` we need to wire up with ` Redux `. And last we need to ` default ` ` export ` the result which is the **wired-up** ` Component `.
     ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -96,7 +96,7 @@
     };
     export default connect( mapStateToProps, mapDispatchToProps )( AdjustPreferences );
     ```
-    4. In ` Show ` ` Component ` we just need to access the attribute ` preferences ` value in the global ` state ` object which we can do exactly as we did in ` AdjustPreferences `. However, here we do not need access to ` actions ` so we define ` ` mapDispatchToProps ` to return an empty object.
+    4. In ` Show ` ` Component ` we just need to access the attribute ` notifications ` value in the global ` state ` object which we can do exactly as we did in ` AdjustPreferences `. However, here we do not need access to ` actions ` so we define ` mapDispatchToProps ` to return an empty object.
     ```
     import React from 'react';
     import { connect } from 'react-redux';

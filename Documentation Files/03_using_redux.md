@@ -27,15 +27,18 @@
         return copiedState;
     };
     ```
-    3. We create ` Store `. We create ` Store ` by invoking the method that we imported. ` createStore ` method:
+    Note that what we did is considered an **immutable way** of updating ` state ` only because our ` state ` here is a **primitive** type. However, if our ` state ` is an object we need to do it in another way as we will see soon.
+    3. We create ` Store ` by invoking the method that we imported. ` createStore ` method which:
         * **accepts**:
             1. ` Reducer ` to be used to respond to actions.
-            2. initial ` state `.
+            2. optional initial ` state `.
+            3. optional **middleware**(will be discussed soon).
+        * **returns**: our application ` Store `.
         ```
         const initialState = 0;
         const store = createStore( reducer, initialState );
         ```  
-    4. We ` subscribe ` to ` Store ` to be notified with new states. We do that by invoking ` subscribe ` method on ` Store ` which accepts a ` function ` to be called when a new ` state ` comes to ` Store`. Inside this ` function ` we need to log the new ` state ` by calling the ` function ` ` getState ` on ` Store`. [This part will be handled by ` ReactJS `].  
+    4. We ` subscribe ` to ` Store ` to be notified with new states. We do that by invoking ` subscribe ` method on ` Store ` which accepts a ` function ` to be called when a new ` state ` comes to ` Store`. Inside this ` function ` we need to log the new ` state ` by calling the ` function ` ` getState ` on ` Store`. [This part will be handled by ` ReactJS ` when ` Redux ` is combined with ` ReactJS ` soon].  
     ```
     store.subscribe( () => {
         console.log( "New state", store.getState() );

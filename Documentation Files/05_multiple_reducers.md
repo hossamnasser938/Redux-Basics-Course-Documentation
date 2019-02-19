@@ -1,6 +1,6 @@
 # Multiple Reducers
-* Now it's time to see how to use **multiple** ` Reducers `.
-* It's very simple. All you need to do is to define a ` function ` for each ` Reducer ` and ` import ` the method ` combineReducers ` from ` Redux ` which, as the name suggests, is used to **combine** multiple ` Reducers ` together and pass the result to ` createStore ` method. ` combineReducers ` method accepts an object that wraps all ` Reducers ` as values for keys. [Note that you need to choose **unique** names for ` actions ` since we have multiple ` Reducers ` but only one ` Store ` that will be used to receive the ` action ` and then it should decides which ` Reducer ` can handle that ` action ` from its name].
+* In practical application its global ` state ` is a big object and the application has so many ` actions ` that update this ` state `. Certainly it is not efficient to handle all these ` actions ` in one ` Reducer`. So now it's time to see how to use **multiple** ` Reducers `.
+* It's very simple. All you need to do is to define a ` function ` for each ` Reducer ` and ` import ` the method ` combineReducers ` from ` redux ` which, as the name suggests, is used to **combine** multiple ` Reducers ` together and pass the result to ` createStore ` method. ` combineReducers ` method accepts an object that wraps all ` Reducers ` as values for keys. [Note that you need to choose **unique** names for ` actions ` since we have multiple ` Reducers ` but only one ` Store ` that will be used to receive the ` action ` and then it should decides which ` Reducer ` can handle that ` action ` from its name].
 * Let's move our previous example to use **multiple** ` Reducers `.
     1. ` import ` the method ` combineReducers `.
     ```
@@ -43,7 +43,7 @@
       })
     );
     ```
-    ES6 has a good features that lets you pass only value in an object and it will create keys of the same name as the values.
+    ES6 has a good feature that lets you pass only values in an object and it will create keys of the same name as the values.
     ```
     const Store = createStore( combineReducers( { MathReducer, UserReducer } ) );
     ```

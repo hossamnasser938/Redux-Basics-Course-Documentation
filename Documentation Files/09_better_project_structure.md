@@ -17,7 +17,6 @@
                 copiedState.notifications = false;
                 break;
         }
-
         return copiedState;
     };
     export default preferencesReducer;
@@ -49,7 +48,7 @@
         }
     }
     ```  
-    Note that we define a ` function ` for each ` action ` to return an ` action ` object to be **dispatched** where we need. Note also that we **exported** each ` action ` to be **imported** soon.
+    Note that we defined a ` function ` for each ` action ` to return an ` action ` object to be **dispatched** where we need. Note also that we **exported** each ` action ` to be **imported** soon.
 * Now our ` index.js ` becomes as simple as this:
 ```
 import React from 'react';

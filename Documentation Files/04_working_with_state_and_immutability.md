@@ -7,7 +7,7 @@ const initialState = {
     history: []
 };
 ```
-* Recall that when we had a **primitive-type** ` state ` in the previous example we could make a copy of it like this ` let copiedState = state; `. Since it is a primitive-type, those two variables will have different locations in memory and for that reason that was an **immutable** way of modifying ` state `. However, in case of ` state ` as an object this ` let copiedState = state; ` is not considered an **immutable** way since ` state ` is now just a **reference** to where ` state ` object resides in memory and by assigning this **reference** to another variable, both variables will refer to the same location and by updating any property in the object using any reference of the two the other will be affected since both of them reference the same location.
+* Recall that when we had a **primitive-type** ` state ` in the previous example we could make a copy of it like this ` let copiedState = state; `. Since it is a primitive-type those two variables will have different locations in memory and for that reason that was an **immutable** way of modifying ` state ` because any change on the copy does not affect the original ` state `. However, in case of ` state ` as an object this ` let copiedState = state; ` is not considered an **immutable** way since ` state ` is now just a **reference** to where ` state ` object resides in memory and by assigning this **reference** to another variable, both variables will refer to the same location and by updating any property in the object using any reference of the two the other will be affected since both of them reference the same location.
 * So we need an **immutable** way that works with objects. Actually there are more than one. One of them is using the **spread syntax** introduced in **ES6**.
 ```
 let copiedState = {
@@ -26,7 +26,7 @@ You might ask: ` ...state ` copied the attribute ` history ` with its value, so 
     1. It is a **functional programming concept**: *Avoiding state change and mutable data*.
     2. One of the main functions of ` Store ` in ` Redux ` is to **store** or **keep track** of different versions of ` state ` during application running. Doing that in a **mutable** way makes it only a single ` state `.
     3. Doing that in an **immutable** way allows knowing where you are when you need to.
-* Enough talking let's use a an object for ` state `.
+* Enough talking let's use an object for ` state `.
     1. We've done the first step already by defining the initial ` state`.
     2. We need to modify the ` Reducer `.
     ```

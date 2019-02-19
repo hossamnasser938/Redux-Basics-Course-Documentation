@@ -14,7 +14,7 @@
     }
     ```
     Note here that instead of returning an object we returned another ` function ` that accepts ` dispatch ` ` function ` and call ` dispatch ` in the callback of ` setTimeout ` ` function ` after 3 seconds.
-    Now if we run our application we get an error ` Error: Actions must be plain objects. Use custom middleware for async actions `. So now we need a third-party **middleware** to do that for us. We can use ` redux-thunk ` which we install by hitting ` npm install redux-thunk --save `. Then we just need to sen that **middleware** to our ` Store `.
+    Now if we run our application we get an error ` Error: Actions must be plain objects. Use custom middleware for async actions `. So now we need a third-party **middleware** to do that for us. We can use ` redux-thunk ` which we install by hitting ` npm install redux-thunk --save `. Then we just need to pass that **middleware** to our ` Store `.
     ```
     import { createStore, applyMiddleware } from 'redux';
     import { createLogger } from 'redux-logger';
@@ -23,11 +23,11 @@
     const Store = createStore(
         preferencesReducer,
         {},
-        applyMiddleware( createLogger(), redux-thunk )
+        applyMiddleware( createLogger(), thunk )
     );
     export default Store;
     ```
-    However this works I wondered why we need this **middleware** I mean ` redux-thunk `? What if we handled that ourselves in ` App ` when we ` dispatch ` the ` action `. I mean that we defined our ` action ` to return a ` function ` that accepts ` dispatch ` ` function ` and it calls ` setTimeout ` and when that ` setTimeout ` ` function ` returns in the callback we ` dispatch ` the ` action ` so why not in our ` App ` we do that:
+    However this works I wondered why we need this **middleware**. I mean ` redux-thunk `? What if we handled that ourselves in ` App ` when we ` dispatch ` the ` action `. I mean that we defined our ` action ` to return a ` function ` that accepts ` dispatch ` ` function ` and it calls ` setTimeout ` and when that ` setTimeout ` ` function ` returns in the callback we ` dispatch ` the ` action ` so why not in our ` App ` we do that:
     ```
     const mapDispatchToProps = ( dispatch ) => {
         return {
